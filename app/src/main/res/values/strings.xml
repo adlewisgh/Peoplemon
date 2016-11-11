@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Peoplemon</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="register">register</string>
+    <string name="emai_address">Email Address</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="provide_username_and_password">Provide Username and Password</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="registration_failed">Registration Failed</string>
+    <string name="passwords_dont_match">Passwords Dont Match</string>
+    <string name="provide_vaild_email">Provide a Valid Email</string>
+    <string name="field_empty">Field Empty</string>
+    <string name="email">Email</string>
+    <string name="title_activity_map_view">Map</string>
+    <string name="title_activity_maps123">Map</string>
+    <string name="registration_successful">Registration successful. Please login</string>
+</resources>
