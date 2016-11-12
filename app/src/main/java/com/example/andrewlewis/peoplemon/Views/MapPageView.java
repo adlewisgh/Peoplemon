@@ -379,14 +379,33 @@ public class MapPageView extends RelativeLayout implements OnMapReadyCallback,
                                 }
                             });
                         } else {
-//                            String encodedImage = user.getAvatarBase64();
+                            String encodedImage = user.getAvatarBase64();
+                            byte[] decodedString;
+//                            Bitmap decodedByte;
+                            if (encodedImage != null) {
+                                if (encodedImage.contains(",")) {
+                                    String[] haxor = encodedImage.split(",");
+                                    decodedString = Base64.decode(haxor[1], Base64.DEFAULT);
+                                } else {
+                                    if (encodedImage.length() > 200) {
+                                        decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+                                    } else {
+                                        decodedString = null;
+                                    }
+                                }
+                                if (decodedString != null) {
+                                    decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+//                                    decodedByte = resize(decodedByte);
+                                }
+                            }
 //                            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
 //                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-//                            decodedByte = Bitmap.createScaledBitmap(decodedByte, 120, 120, false);
+                            decodedByte = Bitmap.createScaledBitmap(decodedByte, 120, 120, false);
                             final LatLng userpos = new LatLng(lat, lng);
                             mMap.addMarker(new MarkerOptions()
                                     .title(user.getUserName())
-//                                    .icon(BitmapDescriptorFactory.fromBitmap(decodedByte))
+                                    .icon(BitmapDescriptorFactory.fromBitmap(decodedByte))
                                     .snippet(user.getUserId())
                                     .position(userpos));
                             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
